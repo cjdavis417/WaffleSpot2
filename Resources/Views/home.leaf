@@ -1,0 +1,10 @@
+<html>
+<body>
+<h3>WaffleSpot</h3>
+<form method="get" action="/send">
+<p>Username: <input type="text" name="username" /></p>
+<p><textarea name="content" rows="10" cols="40" placeholder="Write your message here"></textarea></p>
+<p><input type="submit" /></p>
+</form>
+</body>
+</html>
