@@ -1,5 +1,6 @@
 import Vapor
 import Leaf
+import FluentSQLite
 
 /// Called before your application initializes.
 ///
@@ -16,6 +17,21 @@ public func configure(
 
     // Configure the rest of your application here
     
+    // configures Leaf usage
     try services.register(LeafProvider())
     config.prefer(LeafRenderer.self, for: ViewRenderer.self)
+    
+    // configures database in-memory storage
+    try services.register(FluentSQLiteProvider())
+    let sqlite = try SQLiteDatabase(storage: .memory)
+    
+    // starts a database instance of above 'sqlite'm
+    var databases = DatabasesConfig()
+    databases.add(database: sqlite, as: .sqlite)
+    services.register(databases)
+    
+    // attaches Message struct to database
+    var migrationConfig = MigrationConfig()
+    migrationConfig.add(model: Message.self, database: .sqlite)
+    services.register(migrationConfig)
 }
