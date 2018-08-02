@@ -6,5 +6,9 @@
 <p><textarea name="content" rows="10" cols="40" placeholder="Write your message here"></textarea></p>
 <p><input type="submit" /></p>
 </form>
+<h2>Messages from Others</h2>
+#for(message in messages) {
+<p>At #date(message.date, "h:mma"), #(message.username) wrote: "#(message.content)".</p>
+}
 </body>
 </html>

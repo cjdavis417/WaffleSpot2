@@ -20,8 +20,12 @@ public func routes(_ router: Router) throws {
     }
     
     // nothing in 'get()' which means that the root... localhost:8080
+    // creates an array of messages from the DB and returns it to the views
     router.get { req -> Future<View> in
-        return try req.view().render("home")
+        return Message.query(on: req).all().flatMap(to: View.self) { messages in
+            let context = ["messages" : messages]
+            return try req.view().render("home", context)
+        }
     }
     
     router.get("chris") { req -> Future<View> in
