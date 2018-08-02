@@ -1,3 +1,13 @@
+# Server-Side Swift project.
+## This is a simple chat web app.
+
+This is a tutorial I am following to learn how to code with Swift Vapor
+
+tutorial followed: 
+https://www.hackingwithswift.com/articles/67/get-started-with-vapor-3-for-free
+
+
+
 # Vapor Clean
 
 This is a template for Vapor 3 users that does the absolute minimum to set up a working Vapor 3 environment.
